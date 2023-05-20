@@ -20,7 +20,19 @@ router.get("/:shorturl", async (req, res) => {
     return res.send(404).send({ Error: "Something went wrong!!" });
   }
 });
+router.get("/find/:shorturl", async (req, res) => {
+  try {
+    const url = await Url.findOne({ shortUrl: req.params.shorturl });
 
+    if (url) {
+      return res.send(url);
+    } else {
+      return res.status(404).send({ Error: "Url not found!" });
+    }
+  } catch (e) {
+    return res.send(404).send({ Error: "Something went wrong!!" });
+  }
+});
 router.post("/api/v1/oldurl", async (req, res) => {
   try {
     const { originalUrl } = req.body;
