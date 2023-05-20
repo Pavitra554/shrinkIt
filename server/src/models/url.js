@@ -8,6 +8,10 @@ const url_schema = mongoose.Schema({
     shortUrl:{
         type:String,
         require:true
+    },
+    clicks:{
+        type:Number,
+        default:0
     }
 })
 

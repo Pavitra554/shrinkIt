@@ -10,6 +10,8 @@ router.get("/:shorturl", async (req, res) => {
     const url = await Url.findOne({ shortUrl: req.params.shorturl });
 
     if (url) {
+      url.clicks++
+      await url.save()
       return res.redirect(url.originalUrl);
     } else {
       return res.status(404).send({ Error: "Url not found!" });
