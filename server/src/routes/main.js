@@ -33,7 +33,7 @@ router.get("/find/:shorturl", async (req, res) => {
     return res.send(404).send({ Error: "Something went wrong!!" });
   }
 });
-router.post("/api/v1/oldurl", async (req, res) => {
+router.post("/pavitra10042003554/api/v1/oldurl", async (req, res) => {
   try {
     const { originalUrl } = req.body;
 
