@@ -14,10 +14,10 @@ router.get("/:shorturl", async (req, res) => {
       await url.save()
       return res.redirect(url.originalUrl);
     } else {
-      return res.status(404).send({ Error: "Url not found!" });
+      return res.send({ Error: "Url not found!" });
     }
   } catch (e) {
-    return res.send(404).send({ Error: "Something went wrong!!" });
+    return res.send({ Error: "Something went wrong!!" });
   }
 });
 router.get("/find/:shorturl", async (req, res) => {
@@ -27,10 +27,10 @@ router.get("/find/:shorturl", async (req, res) => {
     if (url) {
       return res.send(url);
     } else {
-      return res.status(404).send({ Error: "Url not found!" });
+      return res.send({ Error: "Url not found!" });
     }
   } catch (e) {
-    return res.send(404).send({ Error: "Something went wrong!!" });
+    return res.json({ Error: "Something went wrong!!" });
   }
 });
 router.post("/pavitra10042003554/api/v1/oldurl", async (req, res) => {
@@ -38,7 +38,7 @@ router.post("/pavitra10042003554/api/v1/oldurl", async (req, res) => {
     const { originalUrl } = req.body;
 
     if (!validurl.isUri(originalUrl)) {
-      return res.send(400).send({ Error: "Invalid url" });
+      return res.send({ Error: "Invalid url" });
     }
 
     const url = await Url.findOne({ originalUrl });
@@ -56,7 +56,7 @@ router.post("/pavitra10042003554/api/v1/oldurl", async (req, res) => {
 
     return res.send(newUrl);
   } catch (e) {
-    return res.status(400).send({ Error: "Something went wrong:(" });
+    return res.send({ Error: "Something went wrong:(" });
   }
 });
 
