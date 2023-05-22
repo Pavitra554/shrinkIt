@@ -82,7 +82,7 @@ export default function Home() {
       setButtonStatus("copy");
       toast.success("Short URL generated!");
     }
-    if (data && data.status !== "Success") {
+    if (data && data.status !== "Live") {
       setOriginal("");
       toast.error(data.status);
       setIsloading(false);
@@ -91,11 +91,11 @@ export default function Home() {
 
   React.useEffect(() => {
     setStatusData(statusData);
-    if (statusData && (statusData.clicks || statusData.status === "Success") ) {
+    if (statusData && (statusData.clicks || statusData.status === "Live") ) {
       setCheckload(false);
       toast.success("Status Loaded!");
     }
-    if (statusData && statusData.status !== "Success") {
+    if (statusData && statusData.status !== "Live") {
       setCheckload(false);
       toast.error(statusData.status);
     }
