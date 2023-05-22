@@ -54,7 +54,7 @@ router.post(`/${process.env.API_KEY}/api/v1/oldurl`, async (req, res) => {
     const newUrl = new Url({
       originalUrl,
       shortUrl,
-      status:"Success"
+      status:"Live"
     });
 
     await newUrl.save();
