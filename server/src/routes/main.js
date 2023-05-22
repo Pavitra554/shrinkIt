@@ -37,7 +37,7 @@ router.get("/find/:shorturl", async (req, res) => {
 });
 
 
-router.post("/pavitra10042003554/api/v1/oldurl", async (req, res) => {
+router.post(`/${process.env.API_KEY}/api/v1/oldurl`, async (req, res) => {
   try {
     const { originalUrl } = req.body;
 
