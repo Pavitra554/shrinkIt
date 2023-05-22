@@ -5,6 +5,7 @@ const shortid = require("shortid");
 
 const Url = require("../models/url");
 
+
 router.get("/:shorturl", async (req, res) => {
   try {
     const url = await Url.findOne({ shortUrl: req.params.shorturl });
@@ -14,12 +15,13 @@ router.get("/:shorturl", async (req, res) => {
       await url.save()
       return res.redirect(url.originalUrl);
     } else {
-      return res.send({ Error: "Url not found!" });
+      return res.send({ status: "Url not found!" });
     }
   } catch (e) {
-    return res.send({ Error: "Something went wrong!!" });
+    return res.send({ status: "Something went wrong!!" });
   }
 });
+
 router.get("/find/:shorturl", async (req, res) => {
   try {
     const url = await Url.findOne({ shortUrl: req.params.shorturl });
@@ -27,18 +29,20 @@ router.get("/find/:shorturl", async (req, res) => {
     if (url) {
       return res.send(url);
     } else {
-      return res.send({ Error: "Url not found!" });
+      return res.send({ status: "Url not found!" });
     }
   } catch (e) {
-    return res.json({ Error: "Something went wrong!!" });
+    return res.json({ status: "Something went wrong!!" });
   }
 });
+
+
 router.post("/pavitra10042003554/api/v1/oldurl", async (req, res) => {
   try {
     const { originalUrl } = req.body;
 
     if (!validurl.isUri(originalUrl)) {
-      return res.send({ Error: "Invalid url" });
+      return res.send({ status: "Invalid url" });
     }
 
     const url = await Url.findOne({ originalUrl });
@@ -50,13 +54,14 @@ router.post("/pavitra10042003554/api/v1/oldurl", async (req, res) => {
     const newUrl = new Url({
       originalUrl,
       shortUrl,
+      status:"Success"
     });
 
     await newUrl.save();
 
     return res.send(newUrl);
   } catch (e) {
-    return res.send({ Error: "Something went wrong:(" });
+    return res.send({ status: "Something went wrong:(" });
   }
 });
 

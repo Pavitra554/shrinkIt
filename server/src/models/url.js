@@ -12,6 +12,9 @@ const url_schema = mongoose.Schema({
     clicks:{
         type:Number,
         default:0
+    },
+    status:{
+        type:String
     }
 })
 
