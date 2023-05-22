@@ -12,6 +12,7 @@ import axios from "axios";
 import { useMotionTemplate, useMotionValue, motion } from "framer-motion";
 import { Toaster, toast } from "react-hot-toast";
 import Statusdata from "@/components/statusdata";
+import Footer from "@/components/footer";
 
 export default function Home() {
   //Data
@@ -102,7 +103,7 @@ export default function Home() {
 
   return (
     <main
-      className={`h-screen w-screen p-4 bg-zinc-900 flex gap-8 flex-col justify-center items-center`}
+      className={`h-screen w-screen p-4 bg-zinc-900 flex gap-8 flex-col justify-center items-center relative`}
     >
       <Toaster
         position='top-center'
@@ -149,6 +150,7 @@ export default function Home() {
           statusData={statusData}
         />
       </div>
+      <Footer/>
     </main>
   );
 }
